@@ -1,8 +1,17 @@
-import { Spinner, YStack } from 'tamagui'
-export function Loading() {
+import { Spinner } from "tamagui";
 
-    return (
-        <Spinner theme="ProgressIndicator" size="small" color="$green10" />
-    )
-
+interface LoadingProps {
+  size?: "small" | "large";
+  color?: string;
 }
+const Loading: React.FC<LoadingProps> = ({ size, color }) => {
+  return (
+    <Spinner
+      theme="ProgressIndicator"
+      size={size ?? "small"}
+      color={color ?? "$green10"}
+    />
+  );
+};
+
+export { Loading };
