@@ -1,4 +1,13 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, NextOrObserver, User, getAuth, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  NextOrObserver,
+  User,
+  getAuth,
+  signOut,
+} from "firebase/auth";
+
 import app from "@/firebaseConfig";
 
 const auth = getAuth(app);
@@ -10,7 +19,11 @@ function onAuthStateChange(callback: NextOrObserver<User>) {
 
 async function register(email: string, password: string) {
   try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     return userCredential;
   } catch (error: any) {
     const errorCode = error.code;
@@ -21,7 +34,11 @@ async function register(email: string, password: string) {
 
 async function login(email: string, password: string) {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password)
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     return userCredential;
   } catch (error: any) {
     const errorCode = error.code;

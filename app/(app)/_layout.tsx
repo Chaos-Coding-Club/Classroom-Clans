@@ -1,7 +1,8 @@
-import { useAuth } from "@/contexts/AuthContext";
 import { Redirect, Slot } from "expo-router";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Drawer } from 'expo-router/drawer';
+import { Drawer } from "expo-router/drawer";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function AppLayout() {
   const auth = useAuth();
@@ -20,19 +21,18 @@ export default function AppLayout() {
         <Drawer.Screen
           name="Home/index" // This is the name of the page and must match the url from root
           options={{
-            drawerLabel: 'Home',
-            title: 'Home',
+            drawerLabel: "Home",
+            title: "Home",
           }}
         />
         <Drawer.Screen
           name="Settings/index" // This is the name of the page and must match the url from root
           options={{
-            drawerLabel: 'Settings',
-            title: 'Settings',
+            drawerLabel: "Settings",
+            title: "Settings",
           }}
         />
       </Drawer>
     </GestureHandlerRootView>
   );
-
 }

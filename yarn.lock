@@ -4610,7 +4610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/colors@npm:1.90.16":
+"@tamagui/colors@npm:1.90.16, @tamagui/colors@npm:^1.90.16":
   version: 1.90.16
   resolution: "@tamagui/colors@npm:1.90.16"
   checksum: 5be388b0ed7e78d1db8f2b5c32518bd0712fce466989aaa99c39ae6ef7db421ac42caa96fb6ba7b5478b913e7182f9f66c34c3442ca6a75e662eac28fa1e1c75
@@ -4976,7 +4976,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/linear-gradient@npm:1.90.16":
+"@tamagui/linear-gradient@npm:1.90.16, @tamagui/linear-gradient@npm:^1.90.16":
   version: 1.90.16
   resolution: "@tamagui/linear-gradient@npm:1.90.16"
   dependencies:
@@ -7114,7 +7114,9 @@ __metadata:
     "@react-native-async-storage/async-storage": "npm:^1.22.3"
     "@react-navigation/drawer": "npm:^6.6.11"
     "@react-navigation/native": "npm:^6.0.2"
+    "@tamagui/colors": "npm:^1.90.16"
     "@tamagui/config": "npm:^1.90.16"
+    "@tamagui/linear-gradient": "npm:^1.90.16"
     "@tamagui/metro-plugin": "npm:^1.90.16"
     "@types/eslint": "npm:^8"
     "@types/react": "npm:~18.2.14"
@@ -7123,6 +7125,7 @@ __metadata:
     eslint-config-universe: "npm:^12.0.0"
     expo: "npm:~50.0.6"
     expo-font: "npm:~11.10.2"
+    expo-linear-gradient: "npm:^12.7.2"
     expo-linking: "npm:~6.2.1"
     expo-router: "npm:~3.4.7"
     expo-splash-screen: "npm:~0.26.4"
@@ -8606,6 +8609,15 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: 455cc312dcdd831aff4133b183eb9c1af2e4ebc253d71573039fc9f9c1c84c257dd5f8968afe230569bd856cacf7052bc08fd57d361b18ff7b4925048b0a3e28
+  languageName: node
+  linkType: hard
+
+"expo-linear-gradient@npm:^12.7.2":
+  version: 12.7.2
+  resolution: "expo-linear-gradient@npm:12.7.2"
+  peerDependencies:
+    expo: "*"
+  checksum: 74fc7449bc3400add8cb40173cf5f8010aa239d086a2d43031197c76a380905d126671db7d8efc332cb1e73f806e937156383092798bfb08c09e1191e606fa06
   languageName: node
   linkType: hard
 

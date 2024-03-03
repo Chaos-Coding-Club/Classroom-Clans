@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { Button } from 'tamagui';
-import { logout } from '@/api/auth';
+import React from "react";
+import { View, Text } from "react-native";
+import { Button } from "tamagui";
+
+import { logout } from "@/api/auth";
 
 const HomeScreen: React.FC = () => {
   return (

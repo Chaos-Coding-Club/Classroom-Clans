@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChange } from "@api/auth";
-import { User } from 'firebase/auth';
+import { User } from "firebase/auth";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContextType {
   currentUser: User | null;
@@ -12,12 +12,14 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChange(user => {
+    const unsubscribe = onAuthStateChange((user) => {
       setCurrentUser(user);
       setLoading(false);
     });
