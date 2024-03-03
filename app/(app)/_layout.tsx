@@ -38,6 +38,22 @@ export default function AppLayout() {
             title: "Settings",
           }}
         />
+
+        <Drawer.Screen
+          name="FindClan/index"
+          options={{
+            drawerLabel: "Find Clan",
+            title: "Find Clan",
+          }}
+        />
+
+        <Drawer.Screen
+          name="CreateClan/index"
+          options={{
+            drawerLabel: "Create A Clan",
+            title: "Create A Clan",
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );
