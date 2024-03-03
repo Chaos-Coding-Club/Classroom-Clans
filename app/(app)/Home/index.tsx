@@ -1,13 +1,17 @@
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
-
+import { StyleSheet } from "react-native";
 import { getDocument } from "@/api/db";
 import { useAuth } from "@/contexts/AuthContext";
+import AddClass from "@/components/AddClass";
+import { LinearGradient } from "tamagui/linear-gradient";
+import { Input, Button, Text, View, H1, H2, H3 } from "tamagui";
+import GradientBarGraph from "@/components/barGraph";
 
 const HomeScreen: React.FC = () => {
   const [data, setData] = useState<DocumentData>({});
   const { currentUser } = useAuth();
+  console.log(data);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +29,9 @@ const HomeScreen: React.FC = () => {
   }, []);
   return (
     <View>
-      <Text>Welcome {data.username}!</Text>
+      <H3>Welcome {data.username}!</H3>
+      <GradientBarGraph />
+      <AddClass />
     </View>
   );
 };

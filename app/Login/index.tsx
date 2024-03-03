@@ -73,9 +73,13 @@ const LoginPage: React.FC = () => {
             secureTextEntry
             autoCorrect={false}
           />
-          {loading ? <Loading /> : <Button theme="Button" onPress={handleLogin}>
-            Login
-          </Button>}
+          {loading ? (
+            <Loading />
+          ) : (
+            <Button theme="Button" onPress={handleLogin}>
+              Login
+            </Button>
+          )}
           <Link href="/Register/">
             <Text theme="TextArea" style={styles.Text}>
               Don't have an account? Register here!
