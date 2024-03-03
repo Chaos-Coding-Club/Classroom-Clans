@@ -1,5 +1,6 @@
+import DismissKeyboard from "@components/DismissKeyboard";
 import { Link, router } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   GestureResponderEvent,
   NativeSyntheticEvent,
@@ -9,18 +10,13 @@ import {
 import { Input, Button, Text, View } from "tamagui";
 import { LinearGradient } from "tamagui/linear-gradient";
 
-import DismissKeyboard from "@/Components/dismissKeyboard";
-import { login } from "@/api/auth";
+import { login } from "@api/auth";
+import { Loading } from "@components/Loading";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    console.log('Component re-rendered. Loading state is now:', loading);
-  }, [loading]);
-  
 
   const handleEmailChange = (
     e: NativeSyntheticEvent<TextInputChangeEventData>,
@@ -77,7 +73,7 @@ const LoginPage: React.FC = () => {
             secureTextEntry
             autoCorrect={false}
           />
-          {loading ? <Text>Loading...</Text> : <Button theme="Button" onPress={handleLogin}>
+          {loading ? <Loading /> : <Button theme="Button" onPress={handleLogin}>
             Login
           </Button>}
           <Link href="/Register/">

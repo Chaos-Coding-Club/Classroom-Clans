@@ -5,13 +5,14 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
   StyleSheet,
-  useColorScheme,
 } from "react-native";
 import { Input, Button, Text, View, Theme } from "tamagui";
 import { LinearGradient } from "tamagui/linear-gradient";
 
-import DismissKeyboard from "@/Components/dismissKeyboard";
+import DismissKeyboard from "@components/DismissKeyboard";
 import { register } from "@/api/auth";
+import { Loading } from "@components/Loading";
+
 const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -89,9 +90,9 @@ const RegisterPage: React.FC = () => {
               secureTextEntry
               autoCorrect={false}
             />
-            <Button theme="Button" onPress={handleRegister}>
+            {loading ? <Loading /> : <Button theme="Button" onPress={handleRegister}>
               Register
-            </Button>
+            </Button>}
             <Link href="/(app)/Home">
               <Text theme="TextArea" style={styles.Text}>
                 Already have an account? Login here!
