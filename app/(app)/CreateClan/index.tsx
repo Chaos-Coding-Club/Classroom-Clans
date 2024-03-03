@@ -30,7 +30,6 @@ const FindClan: React.FC = () => {
     try {
       setLoading(true);
       const userRef = getUserDocRef(currentUser!.uid);
-      console.log(userRef);
 
       await setDocument(`clans`, clanName, {
         clan_name: clanName,
@@ -47,41 +46,34 @@ const FindClan: React.FC = () => {
 
   return (
     <DismissKeyboard>
-      <View style={styles.container}>
-        <H6 style={styles.header}>Raise an Army of Academic Warriors!</H6>
-        <Card
-          size="$4"
-          width={250}
-          height={300}
-          scale={0.9}
-          style={styles.card}
-        >
-          <LinearGradient
-            id="gradient"
-            colors={["$green6", "$background"]}
-            style={{ flex: 1 }}
-          >
-            <View>
-              <Input
-                placeholder="Clan Name"
-                style={styles.form}
-                onChange={handleNameChange}
-                value={clanName}
-              />
-              <Input
-                placeholder="Clan Description"
-                style={styles.form}
-                multiline
-                onChange={handleDescriptionChange}
-                value={clanDescription}
-              />
-              <Button style={styles.button} onPress={handleSubmit}>
-                {loading ? <Loading /> : "Submit"}
-              </Button>
-            </View>
-          </LinearGradient>
-        </Card>
-      </View>
+      <LinearGradient
+        id="gradient"
+        colors={["$green6", "$background"]}
+        style={{ flex: 1 }}
+      >
+        <View style={styles.container}>
+          <H6 style={styles.header}>Raise an Army of Academic Warriors!</H6>
+
+          <View style={{ width: "100%" }}>
+            <Input
+              placeholder="Clan Name"
+              style={styles.form}
+              onChange={handleNameChange}
+              value={clanName}
+            />
+            <Input
+              placeholder="Clan Description"
+              style={styles.form}
+              multiline
+              onChange={handleDescriptionChange}
+              value={clanDescription}
+            />
+            <Button style={styles.button} onPress={handleSubmit}>
+              {loading ? <Loading /> : "Submit"}
+            </Button>
+          </View>
+        </View>
+      </LinearGradient>
     </DismissKeyboard>
   );
 };
