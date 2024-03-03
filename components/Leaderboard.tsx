@@ -15,12 +15,21 @@ const Leaderboard: React.FC = () => {
   return (
     <View flex={1}>
       <ScrollView flex={1} maxHeight={"250%"}>
-        <YStack gap={20} padding="$4">
+        <YStack gap={20} paddingTop={20}>
           {users.map((user) => (
-            <Card key={user.id} padding="$4">
-              <XStack alignItems="center" gap="$4">
-                <Text fontWeight="bold">{user.username}</Text>
-                <Text>Rank: {user.rank}</Text>
+            <Card key={user.id} paddingVertical="$4">
+              <XStack
+                alignItems="center"
+                gap="$4"
+                justifyContent="space-between"
+                style={{ width: "100%" }}
+              >
+                <Text paddingHorizontal={20} fontWeight="bold">
+                  {user.username}
+                </Text>
+                <Text paddingHorizontal={20} color={"$green10Dark"}>
+                  #{user.rank}
+                </Text>
               </XStack>
             </Card>
           ))}
