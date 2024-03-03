@@ -47,6 +47,10 @@ async function getDocument(collectionName: string, docId: string) {
   }
 }
 
+function getUserDocRef(userId: string) {
+  return doc(db, "users", userId);
+}
+
 async function updateDocument(
   collectionName: string,
   docId: string,
@@ -91,4 +95,5 @@ export {
   deleteDocument,
   getCollection,
   setDocument,
+  getUserDocRef,
 };

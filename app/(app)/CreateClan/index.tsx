@@ -1,11 +1,50 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import React, { useState } from "react";
+import {
+  NativeSyntheticEvent,
+  StyleSheet,
+  TextInputChangeEventData,
+} from "react-native";
 import { View, Button, Text, H1, H2, H6, Card, Input, YStack } from "tamagui";
 import type { CardProps } from "tamagui";
 import { LinearGradient } from "tamagui/linear-gradient";
+
 import DismissKeyboard from "@/components/DismissKeyboard";
+import { getUserDocRef, setDocument } from "@/api/db";
+import { useAuth } from "@/contexts/AuthContext";
+import { Loading } from "@/components/Loading";
 
 const FindClan: React.FC = () => {
+  const [clanName, setClanName] = useState("");
+  const [clanDescription, setClanDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { currentUser } = useAuth();
+
+  const handleNameChange = (
+    e: NativeSyntheticEvent<TextInputChangeEventData>,
+  ) => setClanName(e.nativeEvent.text);
+  const handleDescriptionChange = (
+    e: NativeSyntheticEvent<TextInputChangeEventData>,
+  ) => setClanDescription(e.nativeEvent.text);
+
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      const userRef = getUserDocRef(currentUser!.uid);
+      console.log(userRef);
+
+      await setDocument(`clans`, clanName, {
+        clan_name: clanName,
+        clan_description: clanDescription,
+        clan_leader: userRef,
+        users: [userRef],
+      });
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
+
   return (
     <DismissKeyboard>
       <View style={styles.container}>
@@ -23,13 +62,22 @@ const FindClan: React.FC = () => {
             style={{ flex: 1 }}
           >
             <View>
-              <Input placeholder={"Clan Name"} style={styles.form}></Input>
               <Input
-                placeholder={"Clan Description"}
+                placeholder="Clan Name"
+                style={styles.form}
+                onChange={handleNameChange}
+                value={clanName}
+              />
+              <Input
+                placeholder="Clan Description"
                 style={styles.form}
                 multiline
-              ></Input>
-              <Button style={styles.button}> Submit</Button>
+                onChange={handleDescriptionChange}
+                value={clanDescription}
+              />
+              <Button style={styles.button} onPress={handleSubmit}>
+                {loading ? <Loading /> : "Submit"}
+              </Button>
             </View>
           </LinearGradient>
         </Card>

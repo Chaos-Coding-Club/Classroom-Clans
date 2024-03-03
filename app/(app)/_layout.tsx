@@ -31,13 +31,6 @@ export default function AppLayout() {
             title: "Home",
           }}
         />
-        <Drawer.Screen
-          name="Settings/index" // This is the name of the page and must match the url from root
-          options={{
-            drawerLabel: "Settings",
-            title: "Settings",
-          }}
-        />
 
         <Drawer.Screen
           name="FindClan/index"
@@ -46,12 +39,18 @@ export default function AppLayout() {
             title: "Find Clan",
           }}
         />
-
         <Drawer.Screen
           name="CreateClan/index"
           options={{
             drawerLabel: "Create A Clan",
             title: "Create A Clan",
+          }}
+        />
+        <Drawer.Screen
+          name="Settings/index" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Settings",
+            title: "Settings",
           }}
         />
       </Drawer>
