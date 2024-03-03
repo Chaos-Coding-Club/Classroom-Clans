@@ -1,12 +1,13 @@
 import { DataPoint, GradientBarGraph } from "@components/barGraph";
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { View, H3 } from "tamagui";
-
 import { getCollection, getDocument } from "@/api/db";
 import AddClass from "@/components/AddClass";
 import { Loading } from "@/components/Loading";
 import { useAuth } from "@/contexts/AuthContext";
+import { StyleSheet, useColorScheme } from "react-native";
+import { View, H2, H3, Progress } from "tamagui";
+
 
 const HomeScreen: React.FC = () => {
   const [userData, setUserData] = useState<DocumentData>({});
@@ -54,10 +55,35 @@ const HomeScreen: React.FC = () => {
           <H3>Welcome {userData.username}!</H3>
           <GradientBarGraph data={graphData} />
           <AddClass />
+          <Progress
+            value={userData.total_class_count / userData.total_class_points}
+            style={styles.Progress}
+          >
+            <Progress.Indicator
+              animation="bouncy"
+              style={styles.progressIndicator}
+            />
+          </Progress>
         </>
       )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  Points: {
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    marginTop: 20,
+  },
+  Progress: {
+    marginTop: 20,
+    backgroundColor: "#434343",
+  },
+  progressIndicator: {
+    backgroundColor: "green",
+  },
+});
 
 export default HomeScreen;

@@ -11,7 +11,12 @@ export const AddClass = () => {
   return (
     <>
       <YStack space>
-        <Button theme="Button" onPress={() => setOpen(true)}>
+
+        <Button
+          style={styles.AddClass}
+          theme="Button"
+          onPress={() => setOpen(true)}
+        >
           Add Class
         </Button>
       </YStack>
@@ -60,6 +65,14 @@ const styles = StyleSheet.create({
   input: {
     width: "100%", // Ensure the input takes the full width available
     // Additional styling for the input can be added here
+  },
+  AddClass: {
+    marginTop: 20,
+    width: "75%",
+    alignSelf: "center", // Align the button to the center horizontally
+    backgroundColor: "#007AFF",
+    shadowColor: "#0055b3",
+    color: "#FFFFFF", // Set text color to white
   },
 });
 
