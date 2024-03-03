@@ -53,31 +53,33 @@ const HomeScreen: React.FC = () => {
         </View>
       ) : (
         <>
-          {/* <DismissKeyboard> */}
           <View style={styles.generalHome}>
-            <H3>Welcome {userData.username}!</H3>
-            <H2 style={styles.Points}>Points: {userData.total_class_count}</H2>
-            <GradientBarGraph data={graphData} />
-            <AddClass />
-            <View style={styles.progressView}>
-              <H6>Weekly Progress:</H6>
-              <Progress
-                value={Math.round(
-                  (userData.total_class_count / userData.total_class_points) *
-                    100,
-                )}
-                style={styles.Progress}
-              >
-                <Progress.Indicator
-                  animation="bouncy"
-                  style={styles.progressIndicator}
-                />
-              </Progress>
-            </View>
-            <H6 style={styles.Leaderboard}>Leaderboard:</H6>
-            <Leaderboard />
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <H3>Welcome {userData.username}!</H3>
+              <H2 style={styles.Points}>
+                Points: {userData.total_class_count}
+              </H2>
+              <GradientBarGraph data={graphData} />
+              <AddClass />
+              <View style={styles.progressView}>
+                <H6>Weekly Progress:</H6>
+                <Progress
+                  value={Math.round(
+                    (userData.total_class_count / userData.total_class_points) *
+                      100,
+                  )}
+                  style={styles.Progress}
+                >
+                  <Progress.Indicator
+                    animation="bouncy"
+                    style={styles.progressIndicator}
+                  />
+                </Progress>
+              </View>
+              <H6 style={styles.Leaderboard}>Leaderboard:</H6>
+              <Leaderboard />
+            </ScrollView>
           </View>
-          {/* </DismissKeyboard> */}
         </>
       )}
     </View>
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
 
   Leaderboard: {
     marginTop: 20,
-    textAlign: "center",
+    textAlign: "left",
   },
 
   generalHome: {

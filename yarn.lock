@@ -5774,7 +5774,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tamagui/tooltip@npm:1.90.16":
+"@tamagui/tooltip@npm:1.90.16, @tamagui/tooltip@npm:^1.90.16":
   version: 1.90.16
   resolution: "@tamagui/tooltip@npm:1.90.16"
   dependencies:
@@ -7430,6 +7430,7 @@ __metadata:
     "@tamagui/linear-gradient": "npm:^1.90.16"
     "@tamagui/lucide-icons": "npm:^1.90.16"
     "@tamagui/metro-plugin": "npm:^1.90.16"
+    "@tamagui/tooltip": "npm:^1.90.16"
     "@types/eslint": "npm:^8"
     "@types/react": "npm:~18.2.14"
     "@types/react-native-svg-charts": "npm:^5"
