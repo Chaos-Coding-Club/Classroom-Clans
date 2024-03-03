@@ -67,12 +67,13 @@ async function deleteDocument(collectionName: string, docId: string) {
 }
 
 async function getCollection(
-  collectionName: string,
+  path: string,
+  pathSegments: string[],
   where?: QueryCompositeFilterConstraint,
 ) {
   try {
     const q = query(
-      collection(db, collectionName),
+      collection(db, path, ...pathSegments),
       where ? where : ({} as QueryCompositeFilterConstraint),
     );
     const querySnapshot = await getDocs(q);
