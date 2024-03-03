@@ -2,7 +2,7 @@ import * as scale from "d3-scale";
 import React from "react";
 import { View } from "react-native";
 import { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
-import { BarChart, Grid, XAxis } from "react-native-svg-charts";
+import { BarChart } from "react-native-svg-charts";
 
 type DataPoint = {
   value: number;
@@ -87,16 +87,7 @@ const GradientBarGraph: React.FC = () => {
             throw new Error("Function not implemented.");
           }}
         />
-        <Grid />
       </BarChart>
-      <XAxis
-        style={{ marginTop: 10 }}
-        data={data}
-        formatLabel={(index) => data[index].label}
-        contentInset={{ left: 15, right: 15 }}
-        svg={{ fontSize: 10, fill: "black" }}
-        scale={scale.scaleBand}
-      />
     </View>
   );
 };
