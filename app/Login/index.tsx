@@ -1,5 +1,5 @@
-import { Link, router, useRouter } from "expo-router";
-import React, { useState } from "react";
+import { Link, router } from "expo-router";
+import React, { useEffect, useState } from "react";
 import {
   GestureResponderEvent,
   NativeSyntheticEvent,
@@ -15,6 +15,12 @@ import { login } from "@/api/auth";
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    console.log('Component re-rendered. Loading state is now:', loading);
+  }, [loading]);
+  
 
   const handleEmailChange = (
     e: NativeSyntheticEvent<TextInputChangeEventData>,
@@ -31,7 +37,9 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (e: GestureResponderEvent) => {
     e.preventDefault();
     try {
+      setLoading(true);
       await login(email, password);
+      setLoading(false);
       router.replace("/(app)/Home");
     } catch (error) {
       console.error("Login failed:", error);
@@ -69,9 +77,9 @@ const LoginPage: React.FC = () => {
             secureTextEntry
             autoCorrect={false}
           />
-          <Button theme="Button" onPress={handleLogin}>
+          {loading ? <Text>Loading...</Text> : <Button theme="Button" onPress={handleLogin}>
             Login
-          </Button>
+          </Button>}
           <Link href="/Register/">
             <Text theme="TextArea" style={styles.Text}>
               Don't have an account? Register here!

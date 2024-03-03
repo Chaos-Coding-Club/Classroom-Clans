@@ -1,10 +1,8 @@
-import { Link, Stack, usePathname } from "expo-router";
+import { Link, Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 import { View, Text } from "tamagui";
 
 export default function NotFoundScreen() {
-  const pathname = usePathname();
-  // console.log('Not found at:', pathname);
   return (
     <>
       <Stack.Screen options={{ title: "Oops!" }} />

@@ -16,6 +16,7 @@ const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleEmailChange = (
     e: NativeSyntheticEvent<TextInputChangeEventData>,
@@ -38,7 +39,9 @@ const RegisterPage: React.FC = () => {
   const handleRegister = async (e: GestureResponderEvent) => {
     e.preventDefault();
     try {
-      await register(email, password);
+      setLoading(true);
+      await register(email, password, username);
+      setLoading(false);
       router.replace("/(app)/Home");
     } catch (error) {
       console.error("Login failed:", error);

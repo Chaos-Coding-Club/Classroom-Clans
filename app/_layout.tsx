@@ -4,16 +4,10 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Redirect, Slot, SplashScreen, Stack } from "expo-router";
+import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
-import {
-  TamaguiProvider,
-  createTokens,
-  createTamagui,
-  View,
-  Theme,
-} from "tamagui";
+import { TamaguiProvider } from "tamagui";
 
 import { AuthProvider } from "@/contexts/AuthContext";
 import { config } from "@/tamagui.config";
