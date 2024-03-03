@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContextType {
   currentUser: User | null;
+  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -28,7 +29,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser }}>
+    <AuthContext.Provider value={{ currentUser, loading }}>
       {!loading && children}
     </AuthContext.Provider>
   );

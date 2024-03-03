@@ -1,4 +1,4 @@
-import { Link, router, useRouter } from "expo-router";
+import { Link, router } from "expo-router";
 import React, { useState } from "react";
 import {
   GestureResponderEvent,
