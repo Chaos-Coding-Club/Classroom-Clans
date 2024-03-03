@@ -21,7 +21,7 @@ function onAuthStateChange(callback: NextOrObserver<User>) {
 async function register(
   email: string,
   password: string,
-  username: string = "",
+  username: string,
 ) {
   try {
     const userCredential = await createUserWithEmailAndPassword(

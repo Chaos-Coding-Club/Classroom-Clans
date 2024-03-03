@@ -7,9 +7,7 @@ import { useFonts } from "expo-font";
 import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
-import {
-  TamaguiProvider,
-} from "tamagui";
+import { TamaguiProvider } from "tamagui";
 
 import { AuthProvider } from "@/contexts/AuthContext";
 import { config } from "@/tamagui.config";
