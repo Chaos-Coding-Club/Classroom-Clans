@@ -8,6 +8,7 @@ import {
   query,
   QueryCompositeFilterConstraint,
   getDocs,
+  updateDoc,
 } from "firebase/firestore";
 
 import app from "@/firebaseConfig";
@@ -52,7 +53,7 @@ async function updateDocument(
   data: any,
 ) {
   try {
-    await setDoc(doc(db, collectionName, docId), data);
+    await updateDoc(doc(db, collectionName, docId), data);
   } catch (error: any) {
     console.error(error);
   }
