@@ -1,14 +1,17 @@
 import { Link, Stack } from 'expo-router'
 import { StyleSheet } from 'react-native'
 import { View, Text } from 'tamagui'
+import { usePathname } from 'expo-router';
 
 export default function NotFoundScreen() {
+  const pathname = usePathname();
+  // console.log('Not found at:', pathname);
   return (
     <>
       <Stack.Screen options={{ title: 'Oops!' }} />
       <View margin={10}>
         <Text>This screen doesn't exist.</Text>
-        <Link href="/" style={styles.link}>
+        <Link href="/(app)/Home" style={styles.link}>
           <Text style={styles.linkText}>Go to home screen!</Text>
         </Link>
       </View>
