@@ -15,7 +15,10 @@ const DismissKeyboard: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <TouchableWithoutFeedback onPress={dismissKeyboard}>
+    <TouchableWithoutFeedback
+      onPress={dismissKeyboard}
+      style={styles.container}
+    >
       <View style={styles.container}>{children}</View>
     </TouchableWithoutFeedback>
   );

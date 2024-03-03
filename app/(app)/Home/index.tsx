@@ -5,9 +5,10 @@ import { getCollection, getDocument } from "@/api/db";
 import AddClass from "@/components/AddClass";
 import { Loading } from "@/components/Loading";
 import { useAuth } from "@/contexts/AuthContext";
-import { StyleSheet, useColorScheme } from "react-native";
+import { StyleSheet, useColorScheme, ScrollView } from "react-native";
 import { View, H2, H3, H6, Progress } from "tamagui";
 import DismissKeyboard from "@/components/DismissKeyboard";
+import Leaderboard from "@/components/Leaderboard";
 
 const HomeScreen: React.FC = () => {
   const [userData, setUserData] = useState<DocumentData>({});
@@ -45,14 +46,15 @@ const HomeScreen: React.FC = () => {
   }, []);
 
   return (
-    <View flex={1} style={styles.generalHome}>
+    <View style={styles.generalHome}>
       {loading ? (
         <View flex={1} justifyContent="center" alignItems="center">
           <Loading size="large" />
         </View>
       ) : (
         <>
-          <DismissKeyboard>
+          {/* <DismissKeyboard> */}
+          <View style={styles.generalHome}>
             <H3>Welcome {userData.username}!</H3>
             <H2 style={styles.Points}>Points: {userData.total_class_count}</H2>
             <GradientBarGraph data={graphData} />
@@ -72,7 +74,10 @@ const HomeScreen: React.FC = () => {
                 />
               </Progress>
             </View>
-          </DismissKeyboard>
+            <H6 style={styles.Leaderboard}>Leaderboard:</H6>
+            <Leaderboard />
+          </View>
+          {/* </DismissKeyboard> */}
         </>
       )}
     </View>
@@ -97,8 +102,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 
+  Leaderboard: {
+    marginTop: 20,
+    textAlign: "center",
+  },
+
   generalHome: {
     padding: 20,
+    flex: 1,
   },
 });
 
