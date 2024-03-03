@@ -4,20 +4,12 @@ import { View } from "react-native";
 import { Defs, LinearGradient, Stop, Rect } from "react-native-svg";
 import { BarChart, Grid, XAxis } from "react-native-svg-charts";
 
-type DataPoint = {
+interface DataPoint {
   value: number;
   label: string;
-};
+}
 
-const data: DataPoint[] = [
-  { value: 50, label: "Class 1" },
-  { value: 10, label: "Class 2" },
-  { value: 40, label: "Class 3" },
-  { value: 95, label: "Class 4" },
-  { value: 85, label: "Class 5" },
-];
-
-const GradientBarGraph: React.FC = () => {
+const GradientBarGraph: React.FC<{ data: DataPoint[] }> = ({ data }) => {
   const Decorator = ({
     x,
     y,
@@ -101,4 +93,4 @@ const GradientBarGraph: React.FC = () => {
   );
 };
 
-export default GradientBarGraph;
+export { GradientBarGraph, DataPoint };

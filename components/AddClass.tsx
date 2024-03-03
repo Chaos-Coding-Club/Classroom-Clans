@@ -1,8 +1,8 @@
+import DismissKeyboard from "@components/DismissKeyboard";
+import { Sheet } from "@tamagui/sheet";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Button, YStack, Input, View, H3 } from "tamagui";
-import { Sheet } from "@tamagui/sheet";
-import DismissKeyboard from "@components/DismissKeyboard";
 
 export const AddClass = () => {
   const [open, setOpen] = useState(false);
@@ -11,7 +11,7 @@ export const AddClass = () => {
   return (
     <>
       <YStack space>
-        <Button theme={"Button"} onPress={() => setOpen(true)}>
+        <Button theme="Button" onPress={() => setOpen(true)}>
           Add Class
         </Button>
       </YStack>
@@ -22,6 +22,7 @@ export const AddClass = () => {
         snapPoints={snapPoints}
         modal={false} // Always in inline mode
         dismissOnSnapToBottom
+        snapPointsMode="constant"
       >
         <Sheet.Handle />
 
@@ -30,10 +31,10 @@ export const AddClass = () => {
             <View style={styles.form}>
               <H3 style={styles.header}>Enter A Class Name</H3>
               <Input
-                theme={"Input"}
+                theme="Input"
                 placeholder="Class Name"
                 style={styles.input}
-              ></Input>
+              />
             </View>
           </DismissKeyboard>
         </Sheet.Frame>
