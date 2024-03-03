@@ -6,8 +6,8 @@ import AddClass from "@/components/AddClass";
 import { Loading } from "@/components/Loading";
 import { useAuth } from "@/contexts/AuthContext";
 import { StyleSheet, useColorScheme } from "react-native";
-import { View, H2, H3, Progress } from "tamagui";
-
+import { View, H2, H3, H6, Progress } from "tamagui";
+import DismissKeyboard from "@/components/DismissKeyboard";
 
 const HomeScreen: React.FC = () => {
   const [userData, setUserData] = useState<DocumentData>({});
@@ -45,25 +45,34 @@ const HomeScreen: React.FC = () => {
   }, []);
 
   return (
-    <View flex={1}>
+    <View flex={1} style={styles.generalHome}>
       {loading ? (
         <View flex={1} justifyContent="center" alignItems="center">
           <Loading size="large" />
         </View>
       ) : (
         <>
-          <H3>Welcome {userData.username}!</H3>
-          <GradientBarGraph data={graphData} />
-          <AddClass />
-          <Progress
-            value={userData.total_class_count / userData.total_class_points}
-            style={styles.Progress}
-          >
-            <Progress.Indicator
-              animation="bouncy"
-              style={styles.progressIndicator}
-            />
-          </Progress>
+          <DismissKeyboard>
+            <H3>Welcome {userData.username}!</H3>
+            <H2 style={styles.Points}>Points: {userData.total_class_count}</H2>
+            <GradientBarGraph data={graphData} />
+            <AddClass />
+            <View style={styles.progressView}>
+              <H6>Weekly Progress:</H6>
+              <Progress
+                value={Math.round(
+                  (userData.total_class_count / userData.total_class_points) *
+                    100,
+                )}
+                style={styles.Progress}
+              >
+                <Progress.Indicator
+                  animation="bouncy"
+                  style={styles.progressIndicator}
+                />
+              </Progress>
+            </View>
+          </DismissKeyboard>
         </>
       )}
     </View>
@@ -78,11 +87,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   Progress: {
-    marginTop: 20,
     backgroundColor: "#434343",
   },
   progressIndicator: {
     backgroundColor: "green",
+  },
+
+  progressView: {
+    marginTop: 20,
+  },
+
+  generalHome: {
+    padding: 20,
   },
 });
 

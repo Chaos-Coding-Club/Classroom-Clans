@@ -1,17 +1,16 @@
 import DismissKeyboard from "@components/DismissKeyboard";
 import { Sheet } from "@tamagui/sheet";
 import { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Button, YStack, Input, View, H3 } from "tamagui";
 
 export const AddClass = () => {
   const [open, setOpen] = useState(false);
-  const snapPoints = [256, 190]; // Define snap points
+  const snapPoints = [65, 50]; // Define snap points
 
   return (
     <>
       <YStack space>
-
         <Button
           style={styles.AddClass}
           theme="Button"
@@ -20,28 +19,30 @@ export const AddClass = () => {
           Add Class
         </Button>
       </YStack>
-
       <Sheet
         open={open}
         onOpenChange={setOpen}
         snapPoints={snapPoints}
-        modal={false} // Always in inline mode
+        modal // Always in inline mode
+        snapPointsMode="percent"
         dismissOnSnapToBottom
-        snapPointsMode="constant"
       >
+        <Sheet.Overlay
+          animation="lazy"
+          enterStyle={{ opacity: 0 }}
+          exitStyle={{ opacity: 0 }}
+        />
         <Sheet.Handle />
 
         <Sheet.Frame style={styles.sheetFrame}>
-          <DismissKeyboard>
-            <View style={styles.form}>
-              <H3 style={styles.header}>Enter A Class Name</H3>
-              <Input
-                theme="Input"
-                placeholder="Class Name"
-                style={styles.input}
-              />
-            </View>
-          </DismissKeyboard>
+          <View style={styles.form}>
+            <H3 style={styles.header}>Enter A Class Name</H3>
+            <Input
+              theme="Input"
+              placeholder="Class Name"
+              style={styles.input}
+            />
+          </View>
         </Sheet.Frame>
       </Sheet>
     </>
@@ -50,10 +51,9 @@ export const AddClass = () => {
 
 const styles = StyleSheet.create({
   sheetFrame: {
-    flexDirection: "column",
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20, // Add some padding around the content
   },
   form: {
     width: "100%", // Ensure the form takes the full width available
@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   },
   input: {
     width: "100%", // Ensure the input takes the full width available
-    // Additional styling for the input can be added here
   },
   AddClass: {
     marginTop: 20,
